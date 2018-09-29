@@ -1,0 +1,39 @@
+
+  <button routerLink="/user">Create User</button>
+  <div *ngFor="let user of users">
+      <div  [routerLink]='"/user/"+user.id'>
+        {{user.first_name}}
+      </div>
+      <div >
+        <button routerLink="/user" [queryParams]="{id: user.id, name: user.first_name }">
+          Update
+        </button>
+        <button (click)="openDeleteModal(user,content)">
+          delete
+        </button>
+      </div>
+  </div>
+
+<button *ngIf="showLoadMore" (click)="loadUsers()">
+  load more
+</button>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Delete User</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+           Are you sure you want to delete this user {{activeUser.first_name}}
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('yes')">Yes</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('no')">No</button>
+    </div>
+  </ng-template>

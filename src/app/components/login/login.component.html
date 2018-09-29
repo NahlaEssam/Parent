@@ -1,0 +1,25 @@
+<body class="text-center">
+  <form class="form-signin" (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+
+    <input type="email" class="form-control" id="inputEmail" required [(ngModel)]="model.email" name="email" #email="ngModel">
+    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+      Email is required
+    </div>
+   
+    <label for="inputPassword" class="sr-only">Password</label>
+
+    <input type="password" class="form-control" id="inputPassword" [(ngModel)]="model.password" name="password" #password="ngModel"
+      required>
+    <div [hidden]="password.valid || email.pristine" class="alert alert-danger">
+      Password is required
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block parent-btn" type="submit" [disabled]="!heroForm.form.valid">Sign in</button>
+   
+  </form>
+
+
+</body>
