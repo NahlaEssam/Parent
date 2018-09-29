@@ -11,7 +11,7 @@ import { UserService } from '../../shared/services/user/user.service';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
 
@@ -24,7 +24,6 @@ export class UsersListComponent implements OnInit {
     private messageService: MessageService, private userService: UserService) { }
 
   ngOnInit() {
-    console.log(this.userService.getToken());
     this.loadUsers();
   }
 
@@ -54,7 +53,6 @@ export class UsersListComponent implements OnInit {
     this.activeUser = user;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       const closeResult = `Closed with: ${result}`;
-      console.log(closeResult);
       if (result === 'yes') {
         this.deleteUser(user.id);
       }
@@ -62,18 +60,16 @@ export class UsersListComponent implements OnInit {
   }
   deleteUser(userId: number) {
     this.userApiService.deleteUser(userId).subscribe(res => {
-      console.log(res);
-      console.log(this.users);
+
       const index = this.users.findIndex(data => {
         return data.id === userId;
       });
-      alert(index);
       if (index !== -1) {
         this.users.splice(index, 1);
       }
     }, err => {
-      console.log(err);
-    })
+      this.messageService.add({ message: err, type: 'danger' });
+    });
   }
 
 

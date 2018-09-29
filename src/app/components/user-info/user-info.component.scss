@@ -1,0 +1,15 @@
+:host{
+    margin: 5%;
+}
+
+.user-container{
+    display: flex;
+    justify-content: space-between;
+    label{
+        font-weight: bold;
+    }
+    .user-img{
+        border-radius: 15px;
+    }
+}
+

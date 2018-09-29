@@ -14,10 +14,8 @@ export class UserService {
   }
   getToken() {
     if (this.token) {
-      console.log('run time');
       return this.token;
     } else {
-      console.log('local storage');
       this.token = JSON.parse(window.localStorage.getItem('_Token'));
     }
     return this.token;
@@ -30,10 +28,8 @@ export class UserService {
 
   getUser() {
     if (this.userEmail) {
-      console.log('run time');
       return this.userEmail;
     } else {
-      console.log('local storage');
       this.userEmail = JSON.parse(window.localStorage.getItem('_Email'));
     }
     return this.userEmail;

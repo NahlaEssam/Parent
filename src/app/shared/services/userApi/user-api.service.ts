@@ -23,10 +23,6 @@ export class UserApiService {
       'password': password
     };
 
-    // return this.http.post<Token>(`${this.BaseUrl}/login`, userInfo).pipe(
-    //   tap((token: Token) => console.log(`added hero w/ id=${token}`)),
-    //   catchError(this.handleError<Token>('addUser'))
-    // );
     return this.http.post<Token>(`${this.BaseUrl}/login`, userInfo);
 
   }
@@ -34,20 +30,12 @@ export class UserApiService {
   getUserLists(page: number): Observable<UserList> {
 
     const url = `${this.BaseUrl}/users/?page=${page}`;
-    // return this.http.get<UserList>(url).pipe(
-    //   tap(_ => console.log(`fetched hero id=${page}`)),
-    //   catchError(this.handleError<UserList>(`getHero id=${page}`))
-    // );
     return this.http.get<UserList>(url);
   }
-  getUser(userId: number): Observable<UserDetails> {
+  getUser(userId: number): Observable<any> {
 
     const url = `${this.BaseUrl}/users/${userId}`;
-    // return this.http.get<UserDetails>(url).pipe(
-    //   tap(_ => console.log(`fetched hero id=${userId}`)),
-    //   catchError(this.handleError<UserDetails>(`getHero id=${userId}`))
-    // );
-    return this.http.get<UserDetails>(url);
+    return this.http.get<any>(url);
   }
 
   createUser(name: string, job: string): Observable<UserDetails> {
@@ -55,20 +43,11 @@ export class UserApiService {
       'name': name,
       'job': job
     };
-
-    // return this.http.post<User>(`${this.BaseUrl}/users`, userInfo).pipe(
-    //   tap((userDetails: UserDetails) => console.log(`added hero w/ id=${userDetails}`)),
-    //   catchError(this.handleError<UserDetails>('addUser'))
-    // );
     return this.http.post<UserDetails>(`${this.BaseUrl}/users`, userInfo);
 
   }
 
   deleteUser(userId: number): Observable<any> {
-    // return this.http.delete(`${this.BaseUrl}/users/${userId}`).pipe(
-    //   tap(_ => console.log(`deleted hero id=${userId}`)),
-    //   catchError(this.handleError('deleteHero'))
-    // );
     return this.http.delete(`${this.BaseUrl}/users/${userId}`);
   }
 
@@ -77,20 +56,7 @@ export class UserApiService {
       name: name,
       job: job
     };
-    // return this.http.put(`${this.BaseUrl}/users/${user.id}`, updatedUser, httpOptions).pipe(
-    //   tap(_ => console.log(`updated hero id=${user.id}`)),
-    //   catchError(this.handleError<any>('updateHero'))
-    // );
     return this.http.put(`${this.BaseUrl}/users/${userId}`, updatedUser, httpOptions);
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    // TODO : need to have message service to show the error messages generally
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
   }
 
 }

@@ -9,7 +9,7 @@ import { MessageService } from '../../shared/services/message/message.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -25,14 +25,11 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (!this.submitted) {
       this.submitted = true;
-      console.log(this.model);
       this.userApiService.login(this.model.email, this.model.password).subscribe(res => {
 
         this.successfulLogin(res);
       }, err => {
-        console.log(err);
         this.submitted = false;
-        // TODO : implement message service
         this.messageService.add({ message: err, type: 'danger' });
       });
     }

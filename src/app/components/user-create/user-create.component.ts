@@ -34,7 +34,6 @@ export class UserCreateComponent implements OnInit {
   onSubmit() {
     if (!this.submitted) {
       this.submitted = true;
-      console.log(this.model);
       if (this.createView) {
         this.createUser();
       } else {
@@ -59,7 +58,6 @@ export class UserCreateComponent implements OnInit {
     this.userApiService.createUser(this.model.name, this.model.job).subscribe(res => {
       this.successCallback(res);
     }, err => {
-      console.log(err);
       this.submitted = false;
       this.messageService.add({ message: err, type: 'danger' });
     });

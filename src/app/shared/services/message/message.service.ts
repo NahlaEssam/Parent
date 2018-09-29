@@ -9,6 +9,9 @@ export class MessageService {
   messages: { message: string, type: string }[] = [];
   add(message: { message: string, type: string }) {
     this.messages.push(message);
+    setTimeout(() => {
+        this.closeAlert(message);
+    }, 1000);
   }
   clear() {
     this.messages = [];

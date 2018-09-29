@@ -1,0 +1,23 @@
+:host{
+    margin: 5%;
+}
+.users{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .user-container{
+        flex: 1;
+        background-color: white;
+        color: black;    
+        height: 195px;
+        margin: 15px;
+        border-radius: 5px;
+        padding: 15px;
+        width: 30%;
+        max-width: 20%;
+        min-width: 20%;
+    }
+}
+.create-btn{
+    width: 150px !important;
+}

@@ -1,20 +1,24 @@
+<div class="parent-container">
+  <button class="form-control parent-input create-btn"  routerLink="/user">Create User</button>
+  <div class="users">
+ <div class="user-container" *ngFor="let user of users">
+   <div >
+       <div  [routerLink]='"/userInfo/"+user.id'>
+         {{user.first_name}} {{user.last_name}} 
+       </div>
+       <div >
+         <button class="form-control parent-input"  routerLink="/user" [queryParams]="{id: user.id, name: user.first_name }">
+           Update
+         </button>
+         <button class="form-control parent-input"  (click)="openDeleteModal(user,content)">
+           delete
+         </button>
+       </div>
+   </div>
+ </div>
+ </div>
 
-  <button routerLink="/user">Create User</button>
-  <div *ngFor="let user of users">
-      <div  [routerLink]='"/user/"+user.id'>
-        {{user.first_name}}
-      </div>
-      <div >
-        <button routerLink="/user" [queryParams]="{id: user.id, name: user.first_name }">
-          Update
-        </button>
-        <button (click)="openDeleteModal(user,content)">
-          delete
-        </button>
-      </div>
-  </div>
-
-<button *ngIf="showLoadMore" (click)="loadUsers()">
+<button class="form-control parent-input" *ngIf="showLoadMore" (click)="loadUsers()">
   load more
 </button>
 
@@ -37,3 +41,4 @@
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('no')">No</button>
     </div>
   </ng-template>
+</div>

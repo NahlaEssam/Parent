@@ -2,7 +2,4 @@
   <p *ngFor="let alert of messageService.messages">
       <ngb-alert [type]="alert.type" (close)="messageService.closeAlert(alert)">{{ alert.message }}</ngb-alert>
     </p>
-    <p>
-      <button type="button" class="btn btn-primary"  (click)="messageService.clear()">Reset</button>
-    </p>
   </div>

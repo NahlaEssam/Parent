@@ -1,10 +1,17 @@
-<div>
-  User info
-<div *ngIf="userData">
-
-  <div>{{userData.first_name}}</div>
-  <div>{{userData.last_name}}</div>
-  <div>{{userData.avatar}}</div>
+<div class="parent-container">
+  <h1>User info</h1>
+<div *ngIf="userData" class="user-container">
+  <div>
+      <div>
+          <label>First name: </label>
+          {{userData.first_name}}
+        </div>
+        <div>
+            <label>Lasr name: </label>
+          {{userData.last_name}}</div>
+  </div>
+  
+  <img class="user-img" src="{{userData.avatar}}"/>
 </div>
 
 </div>

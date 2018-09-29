@@ -3,16 +3,17 @@ import { ActivatedRoute, Router, NavigationEnd, Params } from '@angular/router';
 
 import { UserApiService } from '../../shared/services/userApi/user-api.service';
 import { MessageService } from '../../shared/services/message/message.service';
+import { UserDetails } from '../../shared/models/user';
 
 
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
-  styleUrls: ['./user-info.component.css']
+  styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
   userId;
-  userData;
+  userData: UserDetails;
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
     private userApiService: UserApiService , private messageService: MessageService) { }

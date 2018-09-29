@@ -1,2 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+html, body, app-root{
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    overflow: hidden;
+}
+.parent-container{
+    width: 90%;
+    margin: auto;
+    background: rgba(255, 255, 255, .6);
+    height: 90%;
+    padding: 5%;
+    color: black;
+    overflow: auto;
+}
+.parent-btn{
+    background-color: #222627 !important;
+    border-color: lightgray !important;
+}
+
+.parent-input,  .parent-btn{
+    margin: 19px 0px;
+}

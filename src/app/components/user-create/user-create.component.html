@@ -1,25 +1,36 @@
-<body class="text-center">
-    <form class="form-signin" (ngSubmit)="onSubmit()" #createForm="ngForm">
-  
-      <h1 class="h3 mb-3 font-weight-normal">Create user</h1>
-      <label for="name" class="sr-only">Name</label>
-  
-      <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
-      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-        Name is required
-      </div>
-     
-      <label for="job" class="sr-only">Job</label>
-  
-      <input type="text" class="form-control" id="job" [(ngModel)]="model.job" name="job" #job="ngModel"
-        required>
-      <div [hidden]="job.valid || job.pristine" class="alert alert-danger">
-        Job is required
-      </div>
-  
-      <button class="btn btn-lg btn-primary btn-block parent-btn" type="submit" [disabled]="!createForm.form.valid">Create User</button>
-     
-    </form>
-  
-  
-  </body>
+<div class="parent-container">
+  <button class="form-control parent-input create-btn"  routerLink="/users">Users</button>
+  <div class="text-center">
+      <form class="form-signin" (ngSubmit)="onSubmit()" #createForm="ngForm">
+    
+        <h1 class="h3 mb-3 font-weight-normal" *ngIf="createView">Create user</h1>
+        <h1 class="h3 mb-3 font-weight-normal" *ngIf="!createView">Update user</h1>
+        <label for="name" class="sr-only">Name</label>
+    
+        <input type="text" class="form-control parent-input" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+       
+        <label for="job" class="sr-only">Job</label>
+    
+        <input type="text" class="form-control parent-input" id="job" [(ngModel)]="model.job" name="job" #job="ngModel"
+          required>
+        <div [hidden]="job.valid || job.pristine" class="alert alert-danger">
+          Job is required
+        </div>
+    
+        <button class="btn btn-lg btn-primary btn-block parent-btn" type="submit" [disabled]="!createForm.form.valid">
+          <span *ngIf="createView">
+              Create User
+          </span>
+          <span *ngIf="!createView">
+              Update User
+            </span>
+          </button>
+       
+      </form>
+    
+    
+    </div>
+</div>
